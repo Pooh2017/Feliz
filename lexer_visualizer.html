@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lexer Visualizer</title>
+  <style>
+    textarea {
+      width: 300px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <textarea id="inputText" placeholder="Ingrese una expresión matemática"></textarea>
+  <button onclick="visualize()">Visualizar</button>
+  <div id="tokenList"></div>
+
+  <script>
+    const tokenTypes = {
+      NUMBER: 'Número',
+      ADD: 'Suma',
+      SUBTRACT: 'Resta',
+      MULTIPLY: 'Multiplicación',
+      DIVIDE: 'División',
+      LPAREN: 'Paréntesis Izquierdo',
+      RPAREN: 'Paréntesis Derecho',
+      VARIABLE: 'Variable',
+      EQUAL: 'Igual',
+      EOF: 'EOF'
+    };
+
+    class Token {
+      constructor(type, value) {
+        this.type = type;
+        this.value = value;
+      }
+    }
+
+    function lexer(input) {
+      let current = 0;
+      const tokens = [];
+
+      while (current < input.length) {
+        let char = input[current];
+
+        if (/\d/.test(char)) {
+          let value = '';
+          while (/\d/.test(char) && current < input.length) {
+            value += char;
+            char = input[++current];
+          }
+          tokens.push(new Token(tokenTypes.NUMBER, value));
+          continue;
+        }
+
+        if (/[a-zA-Z]/.test(char)) {
+          let value = '';
+          while (/[a-zA-Z]/.test(char) && current < input.length) {
+            value += char;
+            char = input[++current];
+          }
+          tokens.push(new Token(tokenTypes.VARIABLE, value));
+          continue;
+        }
+
+        if (char === '+') {
+          tokens.push(new Token(tokenTypes.ADD, char));
+          current++;
+          continue;
+        }
+
+        if (char === '-') {
+          tokens.push(new Token(tokenTypes.SUBTRACT, char));
+          current++;
+          continue;
+        }
+
+        if (char === '*') {
+          tokens.push(new Token(tokenTypes.MULTIPLY, char));
+          current++;
+          continue;
+        }
+
+        if (char === '/') {
+          tokens.push(new Token(tokenTypes.DIVIDE, char));
+          current++;
+          continue;
+        }
+
+        if (char === '(') {
+          tokens.push(new Token(tokenTypes.LPAREN, char));
+          current++;
+          continue;
+        }
+
+        if (char === ')') {
+          tokens.push(new Token(tokenTypes.RPAREN, char));
+          current++;
+          continue;
+        }
+
+        if (char === '=') {
+          tokens.push(new Token(tokenTypes.EQUAL, char));
+          current++;
+          continue;
+        }
+
+        current++;
+      }
+
+      tokens.push(new Token(tokenTypes.EOF, null));
+      return tokens;
+    }
+
+    function visualize() {
+      const inputText = document.getElementById('inputText').value;
+      const tokens = lexer(inputText);
+      const tokenListContainer = document.getElementById('tokenList');
+      tokenListContainer.innerHTML = '';
+
+      tokens.forEach(token => {
+        const tokenElement = document.createElement('div');
+        tokenElement.textContent = `${token.type}: ${token.value}`;
+        tokenListContainer.appendChild(tokenElement);
+      });
+    }
+  </script>
+</body>
+</html>

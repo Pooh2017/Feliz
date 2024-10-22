@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso de usuario</title>
+</head>
+<body>
+    <h1>Acceso de usuario</h1>
+    <form>
+        Ingrese usuario
+        <br>
+        <input type="text" id="usuario">
+        <br><br><br>
+        Ingrese contraseña
+        <br>
+        <input type="password" id="contrasena">
+        <br>
+        <input type="button" value="Confirmar" onclick="acceso()">
+    </form>
+    <script>
+        let user='Pooh17';
+        let password='Denilson17';
+        function acceso(){
+            let usu=document.getElementById('usuario').value;
+            let clave= document.getElementById('contrasena').value;
+            if(usu != user || clave !=password){
+                alert('Usuario o Constrañe incorrecta vuelve a intentar');
+            }else{
+                document.write('Bienvenido: ',user);
+            }
+        }
+    </script>
+</body>
+</html>

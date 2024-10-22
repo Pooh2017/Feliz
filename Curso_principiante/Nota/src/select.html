@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select</title>
+</head>
+<body>
+    <h4>Estudiantes </h4>
+    <form>
+        <p>
+            <select id="select1" onchange="cambio()">
+                <option value="Soy guapo">Eder</option>
+                <option value="Soy fea">Nai</option>
+                <option value="Soy pendejo">Oscar</option>
+            </select>
+        </p>
+        <p>Nombre: <input type="text" id="text1"></p>
+        <p>Que es: <input type="text" id="text2"></p>
+        <p>Numero de la lista: <input type="text" id="text3"></p>
+    </form>
+    <script>
+        function cambio(){
+            let opc=document.getElementById('select1');
+            document.getElementById('text1').value=opc.options[opc.selectedIndex].text;
+            document.getElementById('text2').value=opc.options[opc.selectedIndex].value;
+            document.getElementById('text3').value=opc.selectedIndex;
+        }
+    </script>
+</body>
+</html>

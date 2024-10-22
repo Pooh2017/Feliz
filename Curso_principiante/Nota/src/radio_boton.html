@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio de boton</title>
+</head>
+<body>
+    <h4>¿Me quieres?</h4>
+    <form>
+        <input type="radio" name="horario" id="radio1">Si<br>
+        <input type="radio" name="horario" id="radio2">No<br>
+        <input type="radio" name="horario" id="radio3">Tal vez<br><br>
+        <input type="button" value="Confirmar" onclick="confirmar()">
+
+    </form>
+    <form>
+        <br>
+        <textarea name="area" id="textarea1" cols="30" rows="10"></textarea>
+        <br>
+        <input type="button" value="Enviar" onclick="verificar()">
+    </form>
+    <script>
+        let area=document.getElementById('textarea1');
+        area.style.resize='none';
+        function confirmar(){
+            if(document.getElementById('radio1').checked){
+                alert('Yo tambien te quiero mucho');
+            }
+            if(document.getElementById('radio2').checked){
+                alert('Chinga tu madre');
+            }
+            if(document.getElementById('radio3').checked){
+                alert('Pues vete a la verga');
+            }
+        }
+        function verificar(){
+            if (document.getElementById('textarea1').value.length>100) {
+                alert('No se puede enviar el mensaje');
+            }else if(document.getElementById('textarea1').value.length==0) {
+                alert('No hay nada en espacio');
+            }else{
+                alert('Se envio el mensaje');
+            }
+        }
+    </script>
+</body>
+</html>

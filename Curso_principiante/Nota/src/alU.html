@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Usuarios - CiberLetras</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 20px 0;
+            background: linear-gradient(to right, #00BFFF, #39FF14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            margin-right: 20px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #00BFFF; /* Azul eléctrico */
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="tel"]:focus {
+            border-color: #39FF14; /* Verde neón */
+            outline: none;
+        }
+
+        .button {
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .button-add {
+            background-color: #39FF14; /* Verde neón */
+            color: black;
+        }
+
+        .button-add:hover {
+            background-color: #32CD32; /* Verde más claro */
+        }
+
+        .button-edit {
+            background-color: #00BFFF; /* Azul eléctrico */
+            color: white;
+        }
+
+        .button-edit:hover {
+            background-color: #0099CC; /* Azul más oscuro */
+        }
+
+        .button-delete {
+            background-color: #FF0000; /* Rojo brillante */
+            color: white;
+        }
+
+        .button-delete:hover {
+            background-color: #B22222; /* Rojo más oscuro */
+        }
+
+        table {
+            width: 100%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #00BFFF; /* Azul eléctrico */
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #00BFFF; /* Azul eléctrico */
+            color: white;
+        }
+
+        .footer {
+            width: 100%;
+            color: white;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Administrar Usuarios</h1>
+    </header>
+    <div class="container">
+        <div class="card">
+            <form action="procesar_usuario.html" method="POST">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="apellido_paterno" placeholder="Apellido Paterno" required>
+                <input type="text" name="apellido_materno" placeholder="Apellido Materno" required>
+                <input type="email" name="email" placeholder="Correo Electrónico" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <input type="tel" name="telefono" placeholder="Teléfono" required>
+                <input type="text" name="domicilio" placeholder="Domicilio" required>
+            </form>
+        </div>
+        
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Domicilio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Juan</td>
+                    <td>Pérez</td>
+                    <td>García</td>
+                    <td>juan.perez@example.com</td>
+                    <td>555-1234</td>
+                    <td>Calle Falsa 123</td>
+                </tr>
+                <tr>
+                    <td>María</td>
+                    <td>López</td>
+                    <td>Martínez</td>
+                    <td>maria.lopez@example.com</td>
+                    <td>555-5678</td>
+                    <td>Avenida Siempre Viva 742</td>
+                </tr>
+                <tr>
+                    <td>Carlos</td>
+                    <td>Hernández</td>
+                    <td>Torres</td>
+                    <td>carlos.hernandez@example.com</td>
+                    <td>555-8765</td>
+                    <td>Calle del Sol 456</td>
+                </tr>
+                <tr>
+                    <td>Lucía</td>
+                    <td>Ramírez</td>
+                    <td>Gómez</td>
+                    <td>lucia.ramirez@example.com</td>
+                    <td>555-4321</td>
+                    <td>Calle Luna 789</td>
+                </tr>
+                <tr>
+                    <td>Andrés</td>
+                    <td>Fernández</td>
+                    <td>Ríos</td>
+                    <td>andres.fernandez@example.com</td>
+                    <td>555-1357</td>
+                    <td>Plaza Mayor 101</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="footer">
+        <button type="submit" class="button button-add" form="userForm">Agregar Usuario</button>
+        <button type="button" class="button button-edit" onclick="editUser()" disabled>Editar Usuario</button>
+        <button type="button" class="button button-delete" onclick="deleteUser()" disabled>Eliminar Usuario</button>
+    </div>
+
+    <script>
+        const table = document.getElementById('userTable');
+        const editButton = document.querySelector('.button-edit');
+        const deleteButton = document.querySelector('.button-delete');
+
+        table.addEventListener('click', (event) => {
+            if (event.target.tagName === 'TD') {
+                const row = event.target.parentElement;
+                const selectedRows = table.querySelectorAll('tr.selected');
+                selectedRows.forEach(row => row.classList.remove('selected'));
+                row.classList.add('selected');
+                editButton.disabled = false;
+                deleteButton.disabled = false;
+            }
+        });
+
+        function editUser() {
+            const selectedRow = table.querySelector('tr.selected');
+            document.querySelector('input[name="nombre"]').value = selectedRow.cells[0].innerText;
+            document.querySelector('input[name="apellido_paterno"]').value = selectedRow.cells[1].innerText;
+            document.querySelector('input[name="apellido_materno"]').value = selectedRow.cells[2].innerText;
+            document.querySelector('input[name="email"]').value = selectedRow.cells[3].innerText;
+            document.querySelector('input[name="telefono"]').value = selectedRow.cells[4].innerText;
+            document.querySelector('input[name="domicilio"]').value = selectedRow.cells[5].innerText;
+        }
+
+        function deleteUser() {
+            const selectedRow = table.querySelector('tr.selected');
+            if (selectedRow) {
+                selectedRow.parentElement.removeChild(selectedRow);
+                editButton.disabled = true;
+                deleteButton.disabled = true;
+            }
+        }
+    </script>
+</body>
+</html>

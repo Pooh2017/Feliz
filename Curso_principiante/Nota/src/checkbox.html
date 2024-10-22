@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox</title>
+</head>
+<body>
+    <h4>Que lenguajes conoces</h4>
+    <form>
+        <input type="checkbox" id="check1">java
+        <input type="checkbox" id="check2">c++ <br><br>
+        <input type="button" value="Confirmar" onclick="seleccion()">
+    </form>
+    <script>
+        function seleccion(){
+            let contador=0;
+            if(document.getElementById('check1').checked){
+                contador++;
+            }
+            if(document.getElementById('check2').checked){
+                contador++;
+            }
+
+            if(contador==1){
+                alert('Conoces '+contador+' lenguaje');
+            }else if(contador==0)
+            {
+                alert('No conoces nigun lenguaje');
+            }else
+            {
+                alert('Conoces '+contador+' lenguajes');
+            }
+            
+        }
+    </script>
+
+</body>
+</html>

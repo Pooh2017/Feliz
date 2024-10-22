@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteo de caracteres</title>
+</head>
+<body>
+    <h3>Opciones</h3>
+    Nueva pestaña 
+    <input type="button" value="Ir a new pestaña" onclick="nueva_pestana()"> <br><br>
+    Nuva ventana
+    <input type="button" value="Ir a nes ventana" onclick="nueva_ventana()"><br>
+    <h3>Texto de área</h3>
+    <textarea name="Texto" id="text" cols="30" rows="10" maxlength="140"></textarea><br>
+    Numeor de caracteres que puede ingresar 
+    <h4 id="cantidad">140</h4>
+    <script>
+        function nueva_pestana(){
+            let ventana= open();
+            ventana.document.write('Nueva ventanq');
+            
+        }
+        function nueva_ventana(){
+            let ventana=open('', '', 'width=400, height=240');
+            
+        }
+        //Contar los caracteres
+        document.getElementById('text').addEventListener('keyup',caracteres);
+        function caracteres(){
+            let cantidad= document.getElementById('text').value.length;
+            let disponible= 140 - parseInt(cantidad);
+            document.getElementById('cantidad').innerHTML=disponible;
+            if(disponible== 0){
+                alert('Se acabaron con los caracteres');
+            }
+        }
+    </script>
+</body>
+</html>

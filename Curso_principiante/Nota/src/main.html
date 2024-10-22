@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón Animado</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="heartCanvas" width="800" height="600"></canvas>
+    <script>
+        function drawHeart(context, x, y, width, height) {
+            context.beginPath();
+            context.moveTo(x, y + height / 4);
+            context.quadraticCurveTo(x, y, x + width / 4, y);
+            context.quadraticCurveTo(x + width / 2, y, x + width / 2, y + height / 4);
+            context.quadraticCurveTo(x + width / 2, y, x + (3 * width) / 4, y);
+            context.quadraticCurveTo(x + width, y, x + width, y + height / 4);
+            context.quadraticCurveTo(x + width, y + height / 2, x + (3 * width) / 4, y + (3 * height) / 4);
+            context.lineTo(x + width / 2, y + height);
+            context.lineTo(x + width / 4, y + (3 * height) / 4);
+            context.quadraticCurveTo(x, y + height / 2, x, y + height / 4);
+            context.closePath();
+            context.fillStyle = 'red';
+            context.fill();
+            context.strokeStyle = 'black';
+            context.stroke();
+        }
+
+        function drawText(context, x, y, text) {
+            context.font = '30px Arial';
+            context.fillStyle = 'black';
+            context.fillText(text, x, y);
+        }
+
+        window.onload = function() {
+            const canvas = document.getElementById('heartCanvas');
+            const context = canvas.getContext('2d');
+            const width = 200;
+            const height = 200;
+            let x = canvas.width / 2 - width / 2;
+            let y = canvas.height / 2 - height / 2;
+            let directionX = 2;
+            let directionY = 2;
+
+            function animate() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                drawHeart(context, x, y, width, height);
+                drawText(context, x + width / 4, y + height + 50, 'Te quiero mucho');
+                x += directionX;
+                y += directionY;
+
+                if (x + width > canvas.width || x < 0) {
+                    directionX = -directionX;
+                }
+                if (y + height > canvas.height || y < 0) {
+                    directionY = -directionY;
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        };
+    </script>
+</body>
+</html>

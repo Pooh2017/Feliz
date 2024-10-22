@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - CiberLetras</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 0;
+            background: linear-gradient(to right, #00BFFF, #39FF14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+            width: 350px;
+            backdrop-filter: blur(10px);
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #00BFFF; /* Azul eléctrico */
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: border-color 0.3s;
+        }
+
+        input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #39FF14; /* Verde neón */
+            outline: none;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .checkbox input {
+            margin-right: 10px;
+        }
+
+        .button {
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .button-login {
+            background-color: #39FF14; /* Verde neón */
+            color: black;
+        }
+
+        .button-login:hover {
+            background-color: #32CD32; /* Verde más claro */
+        }
+
+        .button-register {
+            background-color: #00BFFF; /* Azul eléctrico */
+            color: white;
+        }
+
+        .button-register:hover {
+            background-color: #0099CC; /* Azul más oscuro */
+        }
+
+        .forgot-password {
+            color: #39FF14; /* Verde neón */
+            text-decoration: none;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            color: white;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Iniciar Sesión</h1>
+    </header>
+    <main>
+        <div class="card">
+            <form action="procesar_login.html" method="POST">
+                <input type="email" name="email" placeholder="Correo Electrónico" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <div class="checkbox">
+                    <input type="checkbox" name="recordar" id="recordar">
+                    <label for="recordar">Recordar sesión</label>
+                </div>
+                <button type="submit" class="button button-login">Iniciar Sesión</button>
+                <a href="registrar_usuario.html" class="button button-register">Registrarse</a>
+                <a href="recuperar_contrasena.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
+            </form>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>© 2024 CiberLetras. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

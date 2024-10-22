@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiberLetras</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        header {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            width: 100%;
+            top: 0;
+        }
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            background: linear-gradient(to right, #00BFFF, #39FF14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            color: white;
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .features {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 20px;
+        }
+        .feature {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .feature i {
+            font-size: 3em;
+            color: #39FF14; /* Verde neón */
+        }
+        .button {
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        .button:hover {
+            transform: translateY(-2px);
+        }
+        .button-login {
+            background-color: #00BFFF; /* Azul eléctrico */
+            color: white;
+        }
+        .button-login:hover {
+            background-color: #0099CC; /* Azul más oscuro */
+        }
+        .button-register {
+            background-color: #39FF14; /* Verde neón */
+            color: black;
+        }
+        .button-register:hover {
+            background-color: #32CD32; /* Verde más claro */
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            color: white;
+            font-size: 0.9em;
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>CiberLetras</h1>
+    </header>
+    <main>
+        <p>Tu biblioteca digital para explorar, aprender y compartir</p>
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-clock"></i>
+                <h3>Acceso 24/7</h3>
+                <p>Accede a nuestra colección en cualquier momento.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-book-open"></i>
+                <h3>Amplia Colección</h3>
+                <p>Explora miles de libros y recursos digitales.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-user-friends"></i>
+                <h3>Interfaz Amigable</h3>
+                <p>Navega fácilmente y encuentra lo que necesitas.</p>
+            </div>
+        </div>
+        <a href="iniciar_sesion.html" class="button button-login">Iniciar Sesión</a>
+        <a href="registrar_usuario.html" class="button button-register">Registrar Usuario</a>
+    </main>
+    <footer class="footer">
+        <p>© 2024 CiberLetras. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
